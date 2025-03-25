@@ -1,0 +1,18 @@
+name: masscan repo
+on:
+
+  workflow_dispatch
+    
+jobs:
+  Scan-entire-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: TrustMe plugin
+        uses: TrustMe-ai/test-TrustMe-plugin@qa
+        with:
+          fail-if-low-more-than: 50
+          fail-if-high-more-than: 50
+          fail-if-medium-more-than: 50
+          token: ${{secrets.QAToken25032025}}
